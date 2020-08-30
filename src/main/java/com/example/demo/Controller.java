@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequestMapping( value = "")
 public class Controller{
 
-    @GetMapping
+    @GetMapping("/hola")
     public String hola(){
-        return "prueba de rest controller";
+        return "hola";
+    }
+    @GetMapping("/chao")
+    public String chao(){
+        return "chao";
     }
 }
