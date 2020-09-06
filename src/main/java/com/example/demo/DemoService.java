@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.lang.*;
-
 public interface DemoService{
 
 
