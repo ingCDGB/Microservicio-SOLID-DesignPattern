@@ -17,6 +17,7 @@ public class InventarioMedicamento extends BaseInventario{
     @Override
     public Double calcularProducto() {
 
-        return producto.getPrecio() * 0.8;
+        producto.setPrecio(producto.getPrecio() * 0.8);
+        return producto.getPrecio();
     }
 }

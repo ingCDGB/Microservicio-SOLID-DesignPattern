@@ -42,6 +42,16 @@ public class Controller{
         listaProductos.add(new InventarioMedicamento(Producto.builder().nombre("Antibiotico").categoria(2).precio(89.0).build()));
         listaProductos.add(new InventarioMedicamento(Producto.builder().nombre("Antiacido").categoria(2).precio(43.0).build()));
 
+        /**
+         * Ahora agregamos inventario nuevo de Jueguete.
+         * Aplicando este principio de OCP
+         * nos permite agregar un nuevo inventario
+         * sin la necesidad de modificar tienda
+         */
+        listaProductos.add(new InventarioJuguete(Producto.builder().nombre("Juegue01").categoria(3).precio(10.0).build()));
+        listaProductos.add(new InventarioJuguete(Producto.builder().nombre("Juegue02").categoria(3).precio(100.0).build()));
+
+
         Tienda tienda = new Tienda(listaProductos);
 
         tienda.calcularInventario();

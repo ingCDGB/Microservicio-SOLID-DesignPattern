@@ -30,5 +30,7 @@ public class Tienda {
             log.info(producto.toString());
             total.updateAndGet(v -> v + producto.producto.getPrecio());
         });
+
+        log.info(String.format("El total de inventario es de %f",total.get()));
     }
 }

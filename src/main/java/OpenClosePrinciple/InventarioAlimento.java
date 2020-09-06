@@ -15,6 +15,7 @@ public class InventarioAlimento extends BaseInventario{
      */
     @Override
     public Double calcularProducto() {
-        return producto.getPrecio() * 1.2;
+        producto.setPrecio(producto.getPrecio() * 1.2);
+        return producto.getPrecio();
     }
 }
