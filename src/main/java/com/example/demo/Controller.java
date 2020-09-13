@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import LSP.Noticiero;
+import LSP.Principal;
 import LSP.Radio;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,17 +31,19 @@ public class Controller{
 
     @GetMapping("/LSP")
     public String lsp(){
+        /**
+         * Ahora utilizamos clase abstracta e instanciamos
+         * cada subclase y no hay conflictos.
+         */
 
-        Noticiero noticiero = Noticiero.builder().mensaje("Mensaje").build();
+        /**
+         * Esto es buena utilización del polimorfismo
+         */
+        Principal noticiero = Noticiero.builder().mensaje("Mensaje").build();
         noticiero.muestra();
 
-        Radio radio = new Radio("Mensaje");
+        Principal radio = new Radio("Mensaje");
         radio.muestra();
-
-        //Prueba Radio es hijo de Noticiero
-        Noticiero sustituto = new Radio("sustituto");
-        //En este caso se está utilizando el método de
-        sustituto.muestra();
 
         return "Liskov without principle";
     }

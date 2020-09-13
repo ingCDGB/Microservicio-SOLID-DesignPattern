@@ -3,17 +3,17 @@ package LSP;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Builder
-public class Noticiero{
-    /**
-     * Esta será la clase padre
-     */
-    protected String mensaje;
+@SuperBuilder
+public class Noticiero extends Principal{
 
+    public Noticiero(String mensaje){ super(mensaje); }
+
+    @Override
     public void muestra(){
-        log.info(String.format("Desde el noticiero - %s",mensaje));
+        log.info(String.format("Desde el noticiero - %s",this.getMensaje()));
     }
 }

@@ -1,10 +1,12 @@
 package LSP;
 
 import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Radio extends Noticiero {
+@SuperBuilder
+public class Radio extends Principal {
 
     public  Radio(String mensaje){
         super(mensaje);
