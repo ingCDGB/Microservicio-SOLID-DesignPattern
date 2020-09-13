@@ -45,13 +45,11 @@ public class Controller{
         Fax miFax = new Fax();
         miFax.Telefono();
         miFax.Faxear();
-        miFax.Imprimir();
 
         log.info(String.format("%s","----------"));
         MultiSencillo multiSencillo = new MultiSencillo();
         multiSencillo.Escanear();
         multiSencillo.Imprimir();
-//        multiSencillo.Telefono(); //TIRA ERROR
 
         return "Interface Segregation Principle";
     }

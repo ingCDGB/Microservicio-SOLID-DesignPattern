@@ -16,9 +16,7 @@ public class MultiAvanzado implements IMultifuncional{
     public void Escanear(){
         log.info(String.format("%s","Escanear"));
     }
-    public void Telefono(){
-        log.info(String.format("%s","Telefono"));
-    }
+    public void Telefono(){ log.info(String.format("%s","Telefono"));}
     public void Faxear(){
         log.info(String.format("%s","Faxear"));
     }
