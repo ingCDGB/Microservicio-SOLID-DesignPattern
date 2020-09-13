@@ -16,7 +16,7 @@ public class Producto {
     public String toString(){
         String strTipo="";
 
-        strTipo = (tipo == 0 ) ? "Alimento": (tipo == 1) ? "Medicina": "Ropa";
+        strTipo = (tipo == 0 ) ? "Alimento": (tipo == 1) ? "Medicina": (tipo == 2) ? "Ropa": "OTRO";
 
         return String.format("%s, tipo %s, costo %f",nombre,strTipo,costo);
     }

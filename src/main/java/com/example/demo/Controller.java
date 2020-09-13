@@ -49,9 +49,17 @@ public class Controller{
         log.info("--------------------------");
 
         Auditor auditor = new Auditor(miAlmacen);
-        total = auditor.totalesAlimentos();
 
+        total = auditor.totalProductosDeUnTipo(0);
         log.info(String.format("El total de alimentos es %f",total));
+
+        log.info("--------------------------");
+        total = auditor.totalProductosDeUnTipo(1);
+        log.info(String.format("El total de medicina es %f",total));
+
+        log.info("--------------------------");
+        total = auditor.totalProductosDeUnTipo(2);
+        log.info(String.format("El total de ropa es %f",total));
 
         return "Dependency Inversion Principle";
     }

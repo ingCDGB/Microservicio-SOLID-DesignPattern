@@ -5,27 +5,21 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
 @Slf4j
-public class Almacen {
-
-    private List<Producto> inventario;
+public class Almacen implements IAuditable{
 
     /**
-     * Nos vemos forzados a crear la propiedad para que se pueda contar
-     * el inventario.
-     * Al ser una propiedad de tipo List forzamos a Auditor a trabajar con list
+     * Con el principio DIP
+     * mejoramos el Encapsulamiento
+     * dado que ahora no hace falta
+     * poder obtenerlo de afuera de la clase
      *
-     *
-     * Si posteriormente hay cambio en almacen, ejemplo en el nombre del atributo
-     * esto implica un cambio en AUDITOR porque estan FUERTEMENTE ACOPLADOS
-     *
-     * Si por alguna razon se cambia el objeto y no funciona el forEach
-     * entonces se rompe el codigo de calcular el total en AUDITOR
      */
+    private List<Producto> inventario;
+
     public Almacen(){
         inventario = new ArrayList<>();
     }
@@ -33,5 +27,28 @@ public class Almacen {
     public void adicionaProducto(Producto producto){
         inventario.add(producto);
         log.info(String.format("Adicionamos %s",producto.getNombre()));
+    }
+
+    /**
+     *
+     * Ahora almacen le dara una lista que le interesa al Auditor
+     * en vez de que Auditor TRABAJE con la lista de almacen
+     *
+     * esto significa -> DESACOPLAMIENTO
+     *
+     * almacen le da lo que necesita al auditor.
+     *
+     * @param tipo
+     * @return
+     */
+    public Collection obtenerProductos(int tipo){
+        List<Producto> encontrados = new ArrayList<>();
+
+        inventario.forEach(producto -> {
+            if (producto.getTipo() == tipo)
+                encontrados.add(producto);
+        });
+
+        return encontrados;
     }
 }
