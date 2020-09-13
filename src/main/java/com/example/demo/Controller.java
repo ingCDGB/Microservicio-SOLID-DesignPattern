@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import ISP.Fax;
+import ISP.MultiAvanzado;
+import ISP.MultiSencillo;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,5 +30,29 @@ public class Controller{
     public String chao(){
 
         return demoService.goodByeWorld("Mensaje extra");
+    }
+    @GetMapping("/ISP")
+    public String ISP(){
+
+        MultiAvanzado avanzado = new MultiAvanzado();
+        avanzado.Escanear();
+        avanzado.Faxear();
+        avanzado.Imprimir();
+        avanzado.Telefono();
+
+        log.info(String.format("%s","----------"));
+
+        Fax miFax = new Fax();
+        miFax.Telefono();
+        miFax.Faxear();
+        miFax.Imprimir();
+
+        log.info(String.format("%s","----------"));
+        MultiSencillo multiSencillo = new MultiSencillo();
+        multiSencillo.Escanear();
+        multiSencillo.Imprimir();
+//        multiSencillo.Telefono(); //TIRA ERROR
+
+        return "Interface Segregation Principle";
     }
 }
