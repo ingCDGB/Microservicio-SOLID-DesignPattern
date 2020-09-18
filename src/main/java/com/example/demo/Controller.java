@@ -23,9 +23,29 @@ public class Controller{
 
         return demoService.helloWorld("Mensaje extra");
     }
+
     @GetMapping("/chao")
     public String chao(){
 
         return demoService.goodByeWorld("Mensaje extra");
+    }
+
+    @GetMapping("/AOP")
+    public String AOP() {
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.method();
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.argString("Carlos");
+        log.info("------------------------------ 0 ------------------------------");
+        int a = demoService.returnInt();
+        log.info("------------------------------ 0 ------------------------------");
+        try {
+            demoService.exception();
+        } catch (Exception e) {
+        }
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.annotation();
+        log.info("------------------------------ 0 ------------------------------");
+        return "Probando los Aspectos.";
     }
 }
