@@ -23,9 +23,16 @@ public class Controller{
 
         return demoService.helloWorld("Mensaje extra");
     }
+
     @GetMapping("/chao")
     public String chao(){
 
         return demoService.goodByeWorld("Mensaje extra");
+    }
+
+    @GetMapping("/thread")
+    public String thread(){
+        demoService.threadMethod();
+        return "THREAD";
     }
 }
