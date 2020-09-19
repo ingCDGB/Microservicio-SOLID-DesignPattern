@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import paralelismo.ExtendsThread;
 import paralelismo.ImplementsCallable;
 import paralelismo.ImplementsRunnable;
+import paralelismo.UtilizandoFuture;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -55,7 +56,7 @@ public class  DemoServiceImpl implements DemoService {
          * el Callable (si retorna parametro) o
          * Runnable (no retorna parametro)
          */
-        ExecutorService executor = Executors.newFixedThreadPool(3);
+        /*ExecutorService executor = Executors.newFixedThreadPool(3);
         Future<String> task1 = executor.submit(new ImplementsCallable());
         Future<?> task2 = executor.submit(new ImplementsRunnable());
 
@@ -68,6 +69,9 @@ public class  DemoServiceImpl implements DemoService {
             log.info("---"+(String) task2.get());
         }catch(InterruptedException | ExecutionException e){
 
-        }
+        }*/
+
+        UtilizandoFuture utilizandoFuture = new UtilizandoFuture();
+        log.info(utilizandoFuture.ejecutarCalculateAsync());
     }
 }
