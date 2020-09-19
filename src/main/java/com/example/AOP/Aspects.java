@@ -1,24 +1,35 @@
 package com.example.AOP;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-import lombok.extern.slf4j.Slf4j;
 
-@Component
-@Aspect
 @Slf4j
+@Aspect
+@Component
+@Configuration
+@ComponentScan
 public class Aspects {
     /**
      * Inicio de mis Puntos de corte
      */
-    @Pointcut("execution(**(..))")
+    @Pointcut("execution(* *(..))")
     public void allMethods(){
     }
 
     @Pointcut("execution(public * *(..))")
     public void allMethodsPublic(){
+        log.info("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     }
 
     @Pointcut("execution(* com.example.demo.*.* (..))")
@@ -36,6 +47,14 @@ public class Aspects {
     /**
      * INICIO DE MIS CONSEJOS
      */
+    @Before("allMethodsPublic()")
+    public void prueba(JoinPoint jp){
+        log.info("com.example."
+                .concat(jp.getSignature().getName()) //obtiene nombre del metodo
+                .concat("=== Consejo Antes de ejecutar a metodos de un paquete") );
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+    }
+
     @Before("allMethodsPackage()")//utilizo el nombre de mi Pointcut definido arriba
     public void adviceA(JoinPoint jp){
         log.info("com.example."

@@ -9,5 +9,6 @@ public interface DemoService{
     public int returnInt();
     public void exception() throws Exception;
     public void annotation();
+    public void allMethods();
 
 }

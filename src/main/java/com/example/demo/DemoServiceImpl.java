@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.AOP.LogExecutionTime;
 import com.example.AOP.MyClassAnnotation;
 import com.example.AOP.MyMethodAnnotation;
 import lombok.extern.slf4j.Slf4j;
@@ -49,5 +50,24 @@ public class  DemoServiceImpl implements DemoService{
     @MyMethodAnnotation
     public void annotation(){
         log.info("-----------------------> DemoServiceImpl:annotation");
+    }
+
+    @Override
+    @LogExecutionTime
+    public void allMethods(){
+        log.info("------------------------------ 0 ------------------------------");
+        this.method();
+        log.info("------------------------------ 0 ------------------------------");
+        this.argString("Carlos");
+        log.info("------------------------------ 0 ------------------------------");
+        int a = this.returnInt();
+        log.info("------------------------------ 0 ------------------------------");
+        try {
+            this.exception();
+        } catch (Exception e) {
+        }
+        log.info("------------------------------ 0 ------------------------------");
+        this.annotation();
+        log.info("------------------------------ 0 ------------------------------");
     }
 }

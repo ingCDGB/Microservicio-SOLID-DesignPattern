@@ -29,7 +29,7 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 
 	//ASPECT
-//	compile('org.aspectj:aspectjweaver')
+	compile('org.aspectj:aspectjweaver')
 	compile('org.springframework.boot:spring-boot-starter-aop')
 }
 

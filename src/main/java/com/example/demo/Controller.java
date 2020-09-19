@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.AOP.LogExecutionTime;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,21 +32,9 @@ public class Controller{
     }
 
     @GetMapping("/AOP")
+    @LogExecutionTime
     public String AOP() {
-        log.info("------------------------------ 0 ------------------------------");
-        demoService.method();
-        log.info("------------------------------ 0 ------------------------------");
-        demoService.argString("Carlos");
-        log.info("------------------------------ 0 ------------------------------");
-        int a = demoService.returnInt();
-        log.info("------------------------------ 0 ------------------------------");
-        try {
-            demoService.exception();
-        } catch (Exception e) {
-        }
-        log.info("------------------------------ 0 ------------------------------");
-        demoService.annotation();
-        log.info("------------------------------ 0 ------------------------------");
+        demoService.allMethods();
         return "Probando los Aspectos.";
     }
 }
