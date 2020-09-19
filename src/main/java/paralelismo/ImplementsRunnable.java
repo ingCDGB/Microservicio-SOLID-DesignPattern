@@ -9,8 +9,9 @@ public class ImplementsRunnable implements Runnable{
 
     @Override
     public void run(){
-        for(int i=0; i<= 15; i++){
-            log.info("Estamos en el Runnable");
+        for(int i=0; i<= 100; i++){
+//            log.info("Estamos en el Runnable");
         }
+        log.info("Termina la ejecución de Runnable");
     }
 }
