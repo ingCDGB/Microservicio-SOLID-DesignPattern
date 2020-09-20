@@ -31,6 +31,7 @@ dependencies {
 	//ASPECT
 	compile('org.aspectj:aspectjweaver')
 	compile('org.springframework.boot:spring-boot-starter-aop')
+//	compile('org.aspectj:aspectjrt') averiguar si de verdad se necesita o no
 }
 
 test {

@@ -34,7 +34,20 @@ public class Controller{
     @GetMapping("/AOP")
     @LogExecutionTime
     public String AOP() {
-        demoService.allMethods();
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.method();
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.argString("Carlos");
+        log.info("------------------------------ 0 ------------------------------");
+        int a = demoService.returnInt();
+        log.info("------------------------------ 0 ------------------------------");
+        try {
+            demoService.exception();
+        } catch (Exception e) {
+        }
+        log.info("------------------------------ 0 ------------------------------");
+        demoService.annotation();
+        log.info("------------------------------ 0 ------------------------------");
         return "Probando los Aspectos.";
     }
 }
